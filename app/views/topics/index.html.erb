@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Topics</h1>
-
+before_action :authenticate_user!
 <table>
   <thead>
     <tr>
@@ -12,15 +10,16 @@
   </thead>
 
   <tbody>
+
     <% @topics.each do |topic| %>
       <tr>
         <td><%= link_to topic.title, topic %></td>
 
         <td><%= pluralize(topic.votes.count, "vote") %></td>
-        <td><%= button_to 'mas 1', upvote_topic_path(topic), method: :post%></td>
+        <td><%= button_to '+1', upvote_topic_path(topic), method: :post%></td>
 
 
-        
+
       </tr>
     <% end %>
   </tbody>
